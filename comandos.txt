@@ -1,0 +1,31 @@
+Se crean 3 archivos 
+    - Dockerfile
+    - docker-compose.yml
+    - requirements.txt
+
+se ejecuta el siguiente comando
+    - docker compose run web django-admin startproject nombre del proyecto
+
+Este comando instalara todas las dependencias de python especificadas en el archivo requirements.txt y creara un nuevo proyecto de django con el nombre espeficiado
+
+luego se realizan las configuraciones necesarias en el archivo settings del proyecto
+
+luego se ejecuta el siguiente comando  
+    - docker compose up
+
+esto comando creara los contenedores necesarios especificados en el archivo docker-compose.yml creando tambien las imagenes y descargandolas en caso de ser necesario
+
+
+
+
+// el comando docker-compose te permite ejecutar comando de python desde consola dentro del repositorio
+docker-compose run web python manage.py makemigration
+
+
+// este comando levanta la aplicacion
+docker compose up
+
+
+//Ejecutar terminal de SO en contenedor
+docker exec -it id_contenedor /bin/sh
+
