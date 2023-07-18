@@ -3,6 +3,7 @@ from django.conf import settings
 
 from model_utils.models import TimeStampedModel
 
+from .managers import FavoriteManager
 from applications.post.models import Post
 
 
@@ -20,8 +21,10 @@ class Favorite(TimeStampedModel):
         on_delete=models.CASCADE,
     )
 
+    objects = FavoriteManager()
+
     class Meta:
         unique_together = ('user', 'post')
 
     def __str__(self):
-        return self.entry.title
+        return self.post.title

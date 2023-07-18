@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #apps para seo
+    'django.contrib.sitemaps',
     #apps terceros
     'ckeditor',
     'ckeditor_uploader',
@@ -71,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #proceso para poder enviar variables a todas los templates
+                'applications.processors.home_contact'
             ],
         },
     },
@@ -156,4 +160,4 @@ CKEDITOR_CONFIGS = {
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.modnels.BigAutoField'
+#DEFAULT_AUTO_FIELD = 'django.db.modnels.BigAutoField'

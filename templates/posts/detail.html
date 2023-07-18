@@ -1,0 +1,63 @@
+<!-- head para PC -->
+{% extends "posts/base_post.html" %}
+{% load  static %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock title %}
+
+{% block description %}
+  <meta name="description" content="{{ post.resume }}">
+{% endblock description %}
+
+
+    
+<!-- palabras clave para el seo -->
+{% block tags %}
+<meta name="keywords" content="
+    {% for tag in post.Tag.all %}
+     {{ tag.name }},     
+    {% endfor %}
+">
+{% endblock tags %}
+
+{% block content %}
+
+{% include "includes/header.html" %}
+
+<div class="grid-container">
+    <div class="grid-x grid-margin-x" style="margin-top: 1em;">
+        <h3 class="cell">{{ post.title }}</h3>
+
+        <!-- bloque de contenido del articulo -->
+        <div class="cell large-8">
+            <div class="cell callout primary">
+                <h5>{{ post.resume }}:</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores similique at accusamus velit eveniet et perspiciatis, dolorem tenetur voluptate ipsam nesciunt placeat quaerat eius, veritatis officia minima vitae, porro sit.</p>
+            </div>
+            <div>
+                <!-- templete tags son como pipes en angular -->
+                {{ post.content  | safe }}
+            </div>
+        </div>
+        <!-- FIN bloque contenido del articulo -->
+
+        <!-- bloque llamada a la accion -->
+        <div class="cell large-4">
+            <div class="card" style="width: 100%;">
+                <img src="{{ post.imagen.url }}">
+                <div class="card-section" style="width: 100%;">                   
+                  <form class="blog-action" method="post" action="{% url 'favorite_app:create-favorite' post.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="button alert">Agregar a Favoritos</button>
+                  </form>
+                </div>
+            </div>
+        </div>
+        <!-- FIN bloque llamada a la accion -->
+
+    </div>
+</div>
+{% include "includes/footer.html" %}
+
+{% endblock content %}

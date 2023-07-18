@@ -23,9 +23,11 @@ class PostManager(models.Manager):
     #procedimiento de busqueda por palabra clave o categoria
     def buscar_post(self, kword, category):         
         #verificando si se ha enviado una categoria por url
+        print('category')
+        print(category)
         if len(category) > 0:
             return self.filter(
-                category__short_name = category,
+                Category__short_name = category,
                 title__icontains = kword,
                 public=True,
             ).order_by('-created')

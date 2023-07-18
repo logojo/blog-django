@@ -11,13 +11,18 @@
         <div class="cell small-12 large-5">
             <ul class="menu" style="justify-content: flex-end;">
                 <li>
-                    <a href="#">Home</a>
+                    <a href="{% url 'home_app:home'%}">Home</a>
                 </li>
                 <li>
-                    <a href="#">Blog</a>
+                    <a href="{% url 'post_app:posts'%}">Blog</a>
                 </li>
                 <li>
-                    <a class="success button">Acceder</a>
+                    {% if not user.is_anonymous %}
+                        <a href="{% url 'favorite_app:perfil' %}" class="warning button">perfil</a>
+                    {% else %}
+                        <a href="{% url 'users_app:user-login' %}"  class="success button">Acceder</a>
+                    {% endif %}
+
                 </li>
                 
             </ul>

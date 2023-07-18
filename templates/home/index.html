@@ -14,7 +14,7 @@
             <div class="card" style="width: 100%;">
                 <img src="{{ portada.imagen.url }}">
                 <div class="card-section">
-                  <h4>{{ portada.title }}</h4>
+                  <h4><a href="{% url 'post_app:detail' portada.slug %}">{{ portada.title }}</a></h4>
                   <p>{{ portada.resume }}</p>
                 </div>
             </div>
@@ -30,6 +30,7 @@
                         <img src="{{ post.imagen.url }}">
                         <div class="card-section">
                         <!-- los truncate django permiten modificar el contenido de una variable como los pipes en angular -->
+                        <h4><a href="{% url 'post_app:detail' post.slug %}">{{ post.title }}</a></h4>
                         <h5>{{ post.resume | truncatechars:60 }}</h5>
                         </div>
                     </div>
@@ -81,7 +82,7 @@
                 <div class="card" style="width: 100%;">
                     <img src="{{ reciente.imagen.url }}" style="height: 160px;">
                     <div class="card-section">
-                    <h4>{{ reciente.title }}</h4>
+                    <h4><a href="{% url 'post_app:detail' reciente.slug %}">{{ reciente.title }}</a></h4>
                     <p>{{ reciente.resume | truncatechars:30 }}</p>
                     </div>
                 </div>

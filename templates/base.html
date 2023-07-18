@@ -7,6 +7,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/app.css' %}">
   <title>{% block title %}{% endblock title %}</title>
+
+  <!-- descripcion del sitio para el SEO, esto se pode dentro de etiquetas meta -->
+  {% block description %}{% endblock description %}
+
+  <!-- palabras clave que usa el SEO para el posicionamiento,  esto se pode dentro de etiquetas meta -->
+  {% block tags %}{% endblock tags %}
+
+
   {% block css %}{% endblock css %}
 </head>
 <body>

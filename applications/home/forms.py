@@ -1,5 +1,5 @@
 from django import forms
-from .models import Subscriber
+from .models import Subscriber, Contact
 
 class subscriberForm(forms.ModelForm):
     class Meta:
@@ -15,3 +15,10 @@ class subscriberForm(forms.ModelForm):
                 }
             )
         }
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ('__all__')
+
+

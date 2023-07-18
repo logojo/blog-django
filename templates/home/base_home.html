@@ -2,6 +2,15 @@
 
 {% load  static %}
 
+{% block title %}
+    {{ home.title }}
+{% endblock title %}
+
+{% block description %}
+    <!-- este meta es utilizado para describir la descripcion del sitio -->
+    <meta name="description">{{ home.description }}</meta>
+{% endblock description %}
+
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 {% endblock css %}

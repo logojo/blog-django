@@ -1,7 +1,5 @@
-from typing import Any
-from django.db.models.query import QuerySet
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Post, Category
 
@@ -9,7 +7,7 @@ from .models import Post, Category
 class PostView(ListView):
     template_name = "posts/list.html"
     context_object_name = 'posts'
-    paginate_by = 10
+    paginate_by = 3
 
     
     def get_context_data(self, **kwargs):
@@ -22,8 +20,15 @@ class PostView(ListView):
         #recuperando variable de formulario
         kword = self.request.GET.get('kword','')
         #recuperando valor de url
-        category = self.request.GET.get('categoria','')
+        category = self.request.GET.get('category','')
         #consulta de busqueda
         result = Post.objects.buscar_post(kword, category)
         return result
+    
+
+class PostDetail(DetailView):
+    model = Post
+    context_object_name = 'post'
+    template_name = "posts/detail.html"
+
 

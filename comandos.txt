@@ -27,5 +27,5 @@ docker compose up
 
 
 //Ejecutar terminal de SO en contenedor
-docker exec -it id_contenedor /bin/sh
+docker exec -it id_contenedor /bin/sh  o /bin/bash
 
